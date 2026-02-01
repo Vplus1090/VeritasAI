@@ -23,8 +23,7 @@
     </a>
   </p>
   
-  <img src="![demo](https://github.com/user-attachments/assets/3f5ea25f-2eb4-48b9-ac15-fddc7d402c87)
-" alt="VeritasAI Dashboard" width="100%" />
+  <img src="assets/demo.jpeg" alt="VeritasAI Dashboard" width="100%" />
 
 </div>
 
