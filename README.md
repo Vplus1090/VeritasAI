@@ -67,5 +67,5 @@ Instead of a single AI model, VeritasAI employs a **Multi-Agent System** where s
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/Vplus1090/VeritasAI.git](https://github.com/Vplus1090/Veritas_Clean.git)
+git clone [https://github.com/Vplus1090/VeritasAI.git](https://github.com/Vplus1090/VeritasAI.git)
 cd VeritasAI
