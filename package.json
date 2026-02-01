@@ -1,0 +1,14 @@
+{
+  "name": "veritas-ai-root",
+  "private": true,
+  "description": "Root proxy for Veritas AI project",
+  "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm install && npm run build",
+    "lint": "cd frontend && npm run lint",
+    "preview": "cd frontend && npm run preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
