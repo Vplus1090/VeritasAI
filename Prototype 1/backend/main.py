@@ -1,5 +1,6 @@
 # backend/main.py
 import json
+import os
 import re
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -7,9 +8,15 @@ from groq import Groq
 from pypdf import PdfReader
 from io import BytesIO
 from pydantic import BaseModel
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # --- CONFIGURATION ---
-API_KEY = "API_KEY"
+API_KEY = os.getenv("GROQ_API_KEY")
+if not API_KEY:
+    raise ValueError("GROQ_API_KEY environment variable is not set")
 client = Groq(api_key=API_KEY)
 MODEL_NAME = "llama-3.1-8b-instant"
 
