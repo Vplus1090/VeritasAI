@@ -2,12 +2,20 @@
 import sys
 import os
 
-# Add backend directory to Python path so we can import main.py
-backend_path = os.path.join(os.path.dirname(__file__), '..', 'backend')
-sys.path.insert(0, backend_path)
+# Add backend directory to Python path
+backend_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'backend')
+sys.path.insert(0, os.path.abspath(backend_path))
 
-# Import the FastAPI app from backend/main.py
-from main import app
+# Import the FastAPI app
+from main import app as fastapi_app
 
-# Vercel will automatically wrap this FastAPI app with its ASGI handler
-# The app variable is what Vercel looks for
+# Create a wrapper app that mounts the FastAPI app at /api
+from fastapi import FastAPI
+
+app = FastAPI()
+
+# Mount the main app at /api so routes like /api/analyze/accountant work
+app.mount("/api", fastapi_app)
+
+# Export for Vercel
+__all__ = ['app']
