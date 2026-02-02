@@ -467,6 +467,9 @@ const VerdictBox = ({ verdict, confidence, analysis }) => {
 }
 
 function App() {
+  // API Base URL - works for both local dev and Vercel deployment
+  const API_BASE_URL = import.meta.env.PROD ? '/api' : 'http://127.0.0.1:8000'
+
   const [file, setFile] = useState(null)
   const [view, setView] = useState('dashboard')
   const [activeTab, setActiveTab] = useState('accountant')
@@ -502,7 +505,7 @@ function App() {
       try {
         const formData = new FormData()
         formData.append('file', file)
-        const res = await fetch(`http://127.0.0.1:8000/analyze/${agentId}`, { method: 'POST', body: formData })
+        const res = await fetch(`${API_BASE_URL}/analyze/${agentId}`, { method: 'POST', body: formData })
         const data = await res.json()
 
         let payload = data
@@ -530,7 +533,7 @@ function App() {
         bloodhound_analysis: currentResults.bloodhound?.analysis || "No Data"
       }
 
-      const res = await fetch(`http://127.0.0.1:8000/analyze/justice`, {
+      const res = await fetch(`${API_BASE_URL}/analyze/justice`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(safePayload)
@@ -573,7 +576,7 @@ function App() {
         body = formData
       }
 
-      const res = await fetch(`http://127.0.0.1:8000${endpoint}`, { method: 'POST', body: body, headers: headers })
+      const res = await fetch(`${API_BASE_URL}${endpoint}`, { method: 'POST', body: body, headers: headers })
       const data = await res.json()
 
       let payload = data
