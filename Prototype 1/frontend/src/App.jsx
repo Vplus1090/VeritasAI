@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import ReactMarkdown from 'react-markdown'
+// import ReactMarkdown from 'react-markdown'
 import { Check } from 'lucide-react'
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
 
@@ -364,7 +364,7 @@ const BackgroundVideo = () => (
       <div className="bg-orb" style={{ top: '60%', left: '70%', width: '300px', height: '300px', background: 'rgba(255, 255, 255, 0.03)', animationDelay: '-5s' }} />
       <div className="bg-orb" style={{ top: '10%', left: '80%', width: '200px', height: '200px', background: 'rgba(204, 255, 0, 0.03)', animationDelay: '-10s' }} />
     </div>
-    
+
     {/* Optional: Real Video Overlay if you have a file */}
     {/* <video className="bg-video" autoPlay loop muted playsInline>
       <source src="your-video-url.mp4" type="video/mp4" />
@@ -373,18 +373,8 @@ const BackgroundVideo = () => (
 )
 
 const MarkdownRenderer = ({ content }) => (
-  <ReactMarkdown
-    components={{
-      strong: ({ node, ...props }) => <span style={{ color: '#fff', fontWeight: '700', borderBottom: '1px solid rgba(255,255,255,0.2)' }} {...props} />,
-      h1: ({ node, ...props }) => <h1 style={{ fontSize: '1.5rem', marginBottom: '1rem', marginTop: 0, color: '#fff', fontFamily: 'Outfit' }} {...props} />,
-      h2: ({ node, ...props }) => <h2 style={{ fontSize: '1.1rem', marginTop: '2rem', marginBottom: '1rem', color: '#CCFF00', textTransform: 'uppercase', letterSpacing: '1px', fontFamily: 'JetBrains Mono', textShadow: '0 0 10px rgba(204,255,0,0.2)' }} {...props} />,
-      ul: ({ node, ...props }) => <ul style={{ paddingLeft: '1.2rem', marginBottom: '1.5rem' }} {...props} />,
-      li: ({ node, ...props }) => <li style={{ marginBottom: '0.8rem', lineHeight: '1.6', color: '#ddd', fontSize: '15px' }} {...props} />,
-      p: ({ node, ...props }) => <p style={{ marginBottom: '1rem', lineHeight: '1.7', color: '#bbb', fontSize: '15px' }} {...props} />
-    }}
-  >
-    {content || ""}
-  </ReactMarkdown>
+  {/* <ReactMarkdown components={{...}}>{content || ""}</ReactMarkdown> */ }
+  < div > { content || ""}</div >
 )
 
 const RiskDonut = ({ score }) => {
@@ -393,9 +383,9 @@ const RiskDonut = ({ score }) => {
     { name: 'Safety', value: 100 - score },
   ];
 
-  let riskColor = '#CCFF00'; 
-  if (score > 30) riskColor = '#FFD600'; 
-  if (score > 70) riskColor = '#FF3D00'; 
+  let riskColor = '#CCFF00';
+  if (score > 30) riskColor = '#FFD600';
+  if (score > 70) riskColor = '#FF3D00';
 
   const COLORS = [riskColor, 'rgba(255,255,255,0.05)'];
 
@@ -414,12 +404,12 @@ const RiskDonut = ({ score }) => {
               endAngle={-270}
               dataKey="value"
               stroke="none"
-              cornerRadius={5} 
+              cornerRadius={5}
             >
               {data.map((entry, index) => (
-                <Cell 
-                  key={`cell-${index}`} 
-                  fill={COLORS[index % COLORS.length]} 
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
                   style={index === 0 ? { filter: `drop-shadow(0px 0px 10px ${riskColor})` } : {}}
                 />
               ))}
@@ -427,7 +417,7 @@ const RiskDonut = ({ score }) => {
           </PieChart>
         </ResponsiveContainer>
       </div>
-      
+
       <div className="score-container-bottom">
         <span className="score-value-bottom" style={{ color: riskColor, textShadow: `0 0 25px ${riskColor}60` }}>
           {score}/100
@@ -444,11 +434,11 @@ const VerdictBox = ({ verdict, confidence, analysis }) => {
 
   return (
     <div className="animate-entry" style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ 
-        border: `1px solid ${accent}40`, 
-        padding: '40px', 
-        background: `linear-gradient(180deg, ${accent}10 0%, rgba(0,0,0,0) 100%)`, 
-        textAlign: 'center', 
+      <div style={{
+        border: `1px solid ${accent}40`,
+        padding: '40px',
+        background: `linear-gradient(180deg, ${accent}10 0%, rgba(0,0,0,0) 100%)`,
+        textAlign: 'center',
         marginBottom: '30px',
         borderRadius: '12px',
         boxShadow: `0 0 50px -10px ${accent}20`,
@@ -590,13 +580,13 @@ function App() {
     <>
       <style>{styles}</style>
       <BackgroundVideo />
-      
+
       <div className="app-container">
         <aside className="sidebar">
           <div className="block logo-block animate-entry">
             <span className="logo-text">Veritas<span className="logo-dot">AI</span></span>
           </div>
-          
+
           <div className="block upload-block animate-entry" style={{ animationDelay: '0.1s' }}>
             <div className="status-text">{file ? file.name : "NO FILES UPLOADED"}</div>
             <label className="btn-main">
