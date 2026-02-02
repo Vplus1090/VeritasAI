@@ -56,8 +56,10 @@ https://github.com/Vplus1090/VeritasAI/security/secret-scanning/unblock-secret/3
 When you add the environment variable to Vercel, use the API key from your local `backend/.env` file:
 
 ```
-GROQ_API_KEY = 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
+GROQ_API_KEY = <your_actual_groq_api_key>
 ```
+
+**Note:** Your actual key starts with `gsk_` and is stored in `backend/.env`
 
 This key is safe in:
 - ✅ Your local `.env` file (not in Git)

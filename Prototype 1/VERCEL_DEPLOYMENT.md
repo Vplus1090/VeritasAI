@@ -21,8 +21,9 @@ I've configured your project to deploy **both frontend AND backend** to Vercel a
 4. Add this variable:
    ```
    Name:  GROQ_API_KEY
-   Value: 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
+   Value: <your_groq_api_key_here>
    ```
+   **Note:** Use your actual Groq API key (starts with `gsk_`)
 5. Select **All Environments** (Production, Preview, Development)
 6. Click **Save**
 

@@ -37,9 +37,11 @@ Then open the URL shown (usually `http://localhost:5173`)
 Restart it with:
 ```bash
 cd "/Users/vardaangahlot/Projects/VeritasAI/Prototype 1/backend"
-export GROQ_API_KEY=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
+export GROQ_API_KEY=<your_groq_api_key_here>
 python3 -m uvicorn main:app --reload --host 127.0.0.1 --port 8000
 ```
+
+**Note:** Replace `<your_groq_api_key_here>` with your actual key from `backend/.env`
 
 ### If You See "Connection Failed"
 
