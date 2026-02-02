@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-// import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from 'react-markdown'
 import { Check } from 'lucide-react'
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
 
@@ -373,8 +373,18 @@ const BackgroundVideo = () => (
 )
 
 const MarkdownRenderer = ({ content }) => (
-  {/* <ReactMarkdown components={{...}}>{content || ""}</ReactMarkdown> */ }
-  < div > { content || ""}</div >
+  <ReactMarkdown
+    components={{
+      strong: ({ node, ...props }) => <span style={{ color: '#fff', fontWeight: '700', borderBottom: '1px solid rgba(255,255,255,0.2)' }} {...props} />,
+      h1: ({ node, ...props }) => <h1 style={{ fontSize: '1.5rem', marginBottom: '1rem', marginTop: 0, color: '#fff', fontFamily: 'Outfit' }} {...props} />,
+      h2: ({ node, ...props }) => <h2 style={{ fontSize: '1.1rem', marginTop: '2rem', marginBottom: '1rem', color: '#CCFF00', textTransform: 'uppercase', letterSpacing: '1px', fontFamily: 'JetBrains Mono', textShadow: '0 0 10px rgba(204,255,0,0.2)' }} {...props} />,
+      ul: ({ node, ...props }) => <ul style={{ paddingLeft: '1.2rem', marginBottom: '1.5rem' }} {...props} />,
+      li: ({ node, ...props }) => <li style={{ marginBottom: '0.8rem', lineHeight: '1.6', color: '#ddd', fontSize: '15px' }} {...props} />,
+      p: ({ node, ...props }) => <p style={{ marginBottom: '1rem', lineHeight: '1.7', color: '#bbb', fontSize: '15px' }} {...props} />
+    }}
+  >
+    {content || ""}
+  </ReactMarkdown>
 )
 
 const RiskDonut = ({ score }) => {
